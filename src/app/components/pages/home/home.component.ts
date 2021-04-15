@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from "../../../services/login/login.service";
 import { NowPlayingService } from "../../../services/movies/now-playing/now-playing.service";
 import { MorePopularService } from "../../../services/movies/more-popular/more-popular.service";
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,13 +14,19 @@ export class HomeComponent implements OnInit {
   public imageBaseUrl:string;
 
   constructor(
+    private router: Router,
     private _serviceNowPlaying: NowPlayingService,
     private _serviceMorePopular: MorePopularService,
     private _serviceLogin: LoginService
   ) { }
 
   detailMovie(film) {
-    console.log('%c film', 'color:pink', film)
+    this.router.navigate(['detail', film.id], {
+      state: {
+        film: film,
+        imageBaseUrl: this.imageBaseUrl
+      }
+    })
   }
 
   getYear(date) {

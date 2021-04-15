@@ -72,3 +72,15 @@ img {
   flex-basis: auto;
   flex-wrap: wrap;
 }
+.detail-movie-container {
+  width: 900px;
+  margin: 0 auto;
+}
+
+.detail-movie-container .bg-image {
+  height: 800px;
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: center;
+  background-color: #3C3A3B;
+}

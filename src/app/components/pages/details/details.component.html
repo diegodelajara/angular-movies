@@ -1,1 +1,20 @@
-<p>details works!</p>
+<app-header></app-header>
+
+<div class="detail-movie-container">
+  <h1>{{ selectedMovie.title }}</h1>
+  <div
+    class="bg-image"
+    [ngStyle]="{'background-image': 'url(' + imageBaseUrl + selectedMovie.poster_path + ')'}"
+  ></div>
+  <div class="description">
+    <img src="" alt="">
+    <span></span>
+  </div>
+  <div class="characters">
+    <h2>Reparto</h2>
+    <div class="character-card">
+      <img src="" alt="">
+      <p></p>
+    </div>
+  </div>
+</div>

@@ -6,5 +6,6 @@ import { DetailsComponent } from "../app/components/pages/details/details.compon
 export const myRoutes:Array<object> = [
   { path: '', component: LoginComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'details', component: DetailsComponent }
+  { path: 'detail', component: DetailsComponent },
+  { path: 'detail/:id', component: DetailsComponent }
 ]
