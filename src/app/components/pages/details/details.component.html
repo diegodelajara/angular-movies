@@ -7,14 +7,17 @@
     [ngStyle]="{'background-image': 'url(' + imageBaseUrl + selectedMovie.poster_path + ')'}"
   ></div>
   <div class="description">
-    <img src="" alt="">
-    <span></span>
+    <div
+      class="bg-image"
+      [ngStyle]="{'background-image': 'url(' + imageBaseUrl + selectedMovie.backdrop_path + ')'}"
+    ></div>
+    <span>{{ selectedMovie.overview }}</span>
   </div>
+  <h2>Reparto</h2>
   <div class="characters">
-    <h2>Reparto</h2>
-    <div class="character-card">
-      <img src="" alt="">
-      <p></p>
+    <div class="character-card" *ngFor="let actor of actors | keyvalue">
+      <img [src]="imageBaseUrl + actor.value.profile_path" alt="">
+      <p>{{ actor.value.name }}</p>
     </div>
   </div>
 </div>

@@ -13,10 +13,10 @@ header img {
 
 *{
   font-family: 'Poppins', sans-serif;
-   -webkit-user-select: none;
-    -moz-user-select: -moz-none;
-    -o-user-select: none;
-    user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
 }
 
 
@@ -77,10 +77,41 @@ img {
   margin: 0 auto;
 }
 
-.detail-movie-container .bg-image {
+.detail-movie-container > .bg-image {
   height: 800px;
   background-repeat: no-repeat;
   background-size: 60%;
   background-position: center;
   background-color: #3C3A3B;
+  border-radius: 7px;
+}
+.description {
+  display: flex;
+  margin-top: 21px;
+}
+
+.description span {
+  margin-left: 10px;
+}
+
+.description > .bg-image {
+  width: 220px;
+  height: 250px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  flex: none;
+  border-radius: 4px;
+}
+.characters {
+  flex: 1;
+  display: flex;
+  overflow: auto;
+}
+.character-card {
+  flex-direction: column;
+  margin: 0 6px;
+}
+.character-card img {
+  width: 200px;
 }
