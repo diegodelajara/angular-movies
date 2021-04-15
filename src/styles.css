@@ -27,6 +27,7 @@ img {
 .movie-card{
   padding: 0 !important;
   min-width: 200px;
+  max-width: 300px;
   margin:14px; 
   border-radius: 10px;
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
@@ -39,6 +40,7 @@ img {
 .movie-info{
   color: #5e5c5c;
 }
+
 .card-title{
   width: 80%;
   height: 4rem;
@@ -53,4 +55,15 @@ img {
 .now-playing {
   display: flex;
   min-height: min-content;
+  padding: 5rem 0;
+}
+.card-body:nth-child(2) {
+  font-size: 0.7rem;
+}
+
+.more-popular-container {
+  display: flex;
+  justify-content: center;
+  flex-basis: auto;
+  flex-wrap: wrap;
 }
