@@ -13,11 +13,11 @@ export class NowPlayingService {
     protected http: HttpClient
   ) { }
 
-  getNowPlayingMovies() {
+  getNowPlayingMovies(page) {
     const token = sessionStorage.getItem('token');
     const type = sessionStorage.getItem('type');
     return this.http.get(
-      `${this.apiURL}api/movies/now_playing`,
+      `${this.apiURL}api/movies/now_playing?page=${page}`,
       {
         headers: {
           'Authorization': `${type} ${token}`,

@@ -3,7 +3,7 @@
 <h2>Películas en estreno</h2>
 <div class="now-playing">
   
-  <div class="now-playing-container">
+  <div class="now-playing-container" (scroll)="loadMoreMovies($event)">
     <div class="card movie-card" *ngFor="let item of nowPlayingMovies | keyvalue" (click)="detailMovie(item.value)">
       <img [src]="imageBaseUrl + item.value.backdrop_path" class="card-img-top" alt="...">
       <div class="card-body">
@@ -20,7 +20,7 @@
 <div class="more-popular">
 
   <div class="more-popular-container">
-    <div class="card movie-card" *ngFor="let item of morePopularMovies | keyvalue">
+    <div class="card movie-card" *ngFor="let item of morePopularMovies | keyvalue" (click)="detailMovie(item.value)">
       <img [src]="imageBaseUrl + item.value.backdrop_path" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{item.value.title}}</h5>

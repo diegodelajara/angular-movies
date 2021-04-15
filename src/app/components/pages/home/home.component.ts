@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   public nowPlayingMovies:Array<object>;
   public morePopularMovies:Array<object>;
   public imageBaseUrl:string;
+  public page: number = 2;
 
   constructor(
     private router: Router,
@@ -19,6 +20,17 @@ export class HomeComponent implements OnInit {
     private _serviceMorePopular: MorePopularService,
     private _serviceLogin: LoginService
   ) { }
+
+  loadMoreMovies(e) {
+    console.log('%c var', 'color:pink', (e.target as Element).scrollLeft);
+    const { scrollWidth, scrollLeft, scrollRight, clientWidth, offsetWidth } = e.target;
+    
+    // console.log(window.scrollTo(scrollWidth, 0));
+    
+    // if (scrollLeft + lostScrollWidth === scrollWidth) {
+    //   this.getNowPlayingMovies(this.page++)
+    // }
+  }
 
   detailMovie(film) {
     this.router.navigate(['detail', film.id], {
@@ -33,10 +45,14 @@ export class HomeComponent implements OnInit {
     return date.split('-')[0];
   }
 
-  getNowPlayingMovies() {
-    this._serviceNowPlaying.getNowPlayingMovies().subscribe(
+  getNowPlayingMovies(page = 1) {
+    this._serviceNowPlaying.getNowPlayingMovies(page).subscribe(
       (res:any) => {
-        this.nowPlayingMovies = res.body.data;
+        const data = res.body.data;
+        this.nowPlayingMovies 
+        ? data.map(item => this.nowPlayingMovies.push(item)) //this.nowPlayingMovies.push(res.body.data)
+        : this.nowPlayingMovies = res.body.data;
+        
         this.imageBaseUrl = res.body.imageBaseUrl;
       },
       error => {
