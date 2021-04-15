@@ -12,7 +12,8 @@ export class HomeComponent implements OnInit {
   public nowPlayingMovies:Array<object>;
   public morePopularMovies:Array<object>;
   public imageBaseUrl:string;
-  public page: number = 2;
+  public nowPlayingPage: number = 2;
+  public popularPage: number = 2;
 
   constructor(
     private router: Router,
@@ -21,15 +22,28 @@ export class HomeComponent implements OnInit {
     private _serviceLogin: LoginService
   ) { }
 
-  loadMoreMovies(e) {
-    console.log('%c var', 'color:pink', (e.target as Element).scrollLeft);
-    const { scrollWidth, scrollLeft, scrollRight, clientWidth, offsetWidth } = e.target;
+  loadHorizontalMoreMovies(e) {
+    const {
+      scrollWidth,
+      scrollLeft,
+      offsetWidth
+    } = e.target;
     
-    // console.log(window.scrollTo(scrollWidth, 0));
-    
-    // if (scrollLeft + lostScrollWidth === scrollWidth) {
-    //   this.getNowPlayingMovies(this.page++)
-    // }
+    if (offsetWidth + scrollLeft >= scrollWidth) {
+      this.getNowPlayingMovies(this.nowPlayingPage++)
+    }
+  }
+
+  loadVerticalMoreMovies(e) {    
+    const {
+      offsetHeight,
+      scrollTop,
+      scrollHeight
+    } = e.target;
+        
+    if (offsetHeight + scrollTop >= scrollHeight) {
+      this.getMorePopulargMovies(this.popularPage++)
+    }
   }
 
   detailMovie(film) {
@@ -50,8 +64,8 @@ export class HomeComponent implements OnInit {
       (res:any) => {
         const data = res.body.data;
         this.nowPlayingMovies 
-        ? data.map(item => this.nowPlayingMovies.push(item)) //this.nowPlayingMovies.push(res.body.data)
-        : this.nowPlayingMovies = res.body.data;
+          ? data.map(item => this.nowPlayingMovies.push(item))
+          : this.nowPlayingMovies = res.body.data;
         
         this.imageBaseUrl = res.body.imageBaseUrl;
       },
@@ -59,17 +73,21 @@ export class HomeComponent implements OnInit {
         if(error.error.error === 'Unauthorized') {          
           this._serviceLogin.refreshToken().subscribe(
             (res:any) => {              
-              sessionStorage.setItem('user', JSON.stringify(res.data));
+              sessionStorage.setItem('user', JSON.stringify(res.data.user));
             }
           )
         }
       }
     )
   }
-  getMorePopulargMovies() {
+  getMorePopulargMovies(page = 1) {
     this._serviceMorePopular.getMorePopularMovies().subscribe(
       (res:any) => {
-        this.morePopularMovies = res.body.data;
+        const data = res.body.data;
+        this.morePopularMovies 
+          ? data.map(item => this.morePopularMovies.push(item))
+          : this.morePopularMovies = res.body.data;
+
         this.imageBaseUrl = res.body.imageBaseUrl;
       },
       error => {

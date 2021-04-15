@@ -71,6 +71,8 @@ img {
   justify-content: center;
   flex-basis: auto;
   flex-wrap: wrap;
+  height: 100vh;
+  overflow: auto;
 }
 .detail-movie-container {
   width: 100%;
