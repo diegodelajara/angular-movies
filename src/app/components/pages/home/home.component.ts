@@ -19,6 +19,10 @@ export class HomeComponent implements OnInit {
     private _serviceLogin: LoginService
   ) { }
 
+  detailMovie(film) {
+    console.log('%c film', 'color:pink', film)
+  }
+
   getYear(date) {
     return date.split('-')[0];
   }
@@ -50,8 +54,6 @@ export class HomeComponent implements OnInit {
         if(error.error.error === 'Unauthorized') {          
           this._serviceLogin.refreshToken().subscribe(
             (res:any) => {
-              sessionStorage.setItem('user', JSON.stringify(res.data.user));
-              sessionStorage.setItem('refresh_token', res.data.payload.refresh_token);
               sessionStorage.setItem('token', res.data.payload.token);
               sessionStorage.setItem('type', res.data.payload.type);            
             }

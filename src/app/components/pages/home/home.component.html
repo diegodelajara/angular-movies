@@ -4,7 +4,7 @@
 <div class="now-playing">
   
   <div class="now-playing-container">
-    <div class="card movie-card" *ngFor="let item of nowPlayingMovies | keyvalue">
+    <div class="card movie-card" *ngFor="let item of nowPlayingMovies | keyvalue" (click)="detailMovie(item.value)">
       <img [src]="imageBaseUrl + item.value.backdrop_path" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{item.value.title}}</h5>
