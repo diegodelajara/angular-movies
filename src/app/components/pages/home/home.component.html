@@ -1,8 +1,8 @@
 <app-header></app-header>
 
+<h2>Películas en estreno</h2>
 <div class="now-playing">
   
-  <h2>Películas en estreno</h2>
   <div class="now-playing-container">
     <div class="card movie-card" *ngFor="let item of nowPlayingMovies | keyvalue">
       <img [src]="imageBaseUrl + item.value.backdrop_path" class="card-img-top" alt="...">

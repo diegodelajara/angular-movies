@@ -14,13 +14,13 @@ export class NowPlayingService {
   ) { }
 
   getNowPlayingMovies() {
-    const user = JSON.parse(sessionStorage.getItem('user'));
-    const token = user.payload.token;
+    const token = sessionStorage.getItem('token');
+    const type = sessionStorage.getItem('type');
     return this.http.get(
       `${this.apiURL}api/movies/now_playing`,
       {
         headers: {
-          'Authorization': `bearer ${token}`,
+          'Authorization': `${type} ${token}`,
           'Content-Type': 'application/json; charset=utf-8',
         },
         observe: 'response'
