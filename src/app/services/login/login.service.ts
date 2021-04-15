@@ -13,6 +13,22 @@ export class LoginService {
     protected http: HttpClient
   ) { }
 
+  refreshToken() {
+    const user = JSON.parse(sessionStorage.getItem('user'));
+    const refreshToken = user.payload.refresh_token
+    return this.http.post(
+      `${this.apiURL}api/auth/refresh`,
+      {
+        "refresh_token": refreshToken
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+        },
+      }
+    );
+  }
+
   getAuth(username, password) {
     return this.http.post(
       `${this.apiURL}api/auth/login`,
