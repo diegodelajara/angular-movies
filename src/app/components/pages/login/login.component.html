@@ -1,3 +1,9 @@
+<p>
+  <ngb-alert *ngIf="showAlert" [dismissible]="true">
+    <strong>Warning!</strong> Credenciales incorrectas
+  </ngb-alert>
+</p>
+
 <div id="login">
   <h3 class="text-center text-white pt-5">Login form</h3>
   <div class="container">
@@ -12,7 +18,7 @@
             </div>
             <div class="form-group">
               <label for="password" class="text-info">Password:</label><br>
-              <input type="text" name="password" id="password" class="form-control" formControlName="password">
+              <input type="password" name="password" id="password" class="form-control" formControlName="password">
             </div>
             <div class="form-group">
               <br>
