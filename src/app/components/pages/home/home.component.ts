@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
         if(error.error.error === 'Unauthorized')
           this._serviceLogin.refreshToken().subscribe(
             (res:any) => {
-              sessionStorage.setItem('user', JSON.parse(res.data));
+              sessionStorage.setItem('user', JSON.stringify(res.data));
             }
           )
       }

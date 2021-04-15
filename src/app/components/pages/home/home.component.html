@@ -3,13 +3,15 @@
 <h2>Películas en estreno</h2>
 <div class="now-playing">
 
-  <div class="card movie_card" *ngFor="let item of nowPlayingMovies | keyvalue">
-    <img [src]="imageBaseUrl + item.value.backdrop_path" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{item.value.title}}</h5>
-         <span class="movie_info">{{ item.value.release_date }}</span>
-         <span class="movie_info float-right"><i class="fas fa-star"></i>{{ item.value.popularity }}</span>
+  <div class="now-playing-container">
+    <div class="card movie-card" *ngFor="let item of nowPlayingMovies | keyvalue">
+      <img [src]="imageBaseUrl + item.value.backdrop_path" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{item.value.title}}</h5>
+        <span class="movie-info">{{ item.value.release_date }}</span>
+        <span class="movie-info float-right"><i class="fas fa-star"></i>{{ item.value.popularity }}</span>
+      </div>
     </div>
   </div>
-
+    
 </div>

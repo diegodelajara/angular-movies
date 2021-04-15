@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   public isSubmited:boolean = false;
   public msg:string;
   public showAlert:boolean = false;
+  public title = "AgileMovies";
 
   constructor(
     private router: Router,
